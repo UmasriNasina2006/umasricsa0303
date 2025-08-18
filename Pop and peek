@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define MAX 5
+
+int stack[MAX], top = -1;
+
+void push(int val) {
+    if (top == MAX - 1) printf("Stack Overflow\n");
+    else stack[++top] = val;
+}
+
+void pop() {
+    if (top == -1) printf("Stack Underflow\n");
+    else printf("Popped: %d\n", stack[top--]);
+}
+
+void peek() {
+    if (top == -1) printf("Stack is Empty\n");
+    else printf("Top element: %d\n", stack[top]);
+}
+
+int main() {
+    int choice, val;
+    while (1) {
+        printf("\n1.Push  2.Pop  3.Peek  4.Exit\nChoice: ");
+        scanf("%d", &choice);
+        if (choice == 1) { printf("Enter value: "); scanf("%d", &val); push(val); }
+        else if (choice == 2) pop();
+        else if (choice == 3) peek();
+        else break;
+    }
+    return 0;
+}
